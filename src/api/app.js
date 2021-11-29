@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const userRouter = require('./controllers/users/router');
+const { login } = require('./controllers/users');
 const error = require('./middlewares/error');
 
 const app = express();
@@ -15,6 +16,8 @@ app.get('/', (request, response) => {
 // Não remover esse end-point, ele é necessário para o avaliador
 
 app.use('/users', userRouter);
+
+app.use('/login', login);
 
 app.use(error);
 
