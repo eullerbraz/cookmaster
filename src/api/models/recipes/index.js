@@ -1,7 +1,8 @@
-const { create } = require('../entity');
+const { create, getAll } = require('../entity');
 
 const COLLECTION = 'recipes';
 
 module.exports = {
-  create: (user) => create(COLLECTION, user),
+  create: (recipe) => create(COLLECTION, recipe),
+  getAll: () => getAll(COLLECTION),
 };
