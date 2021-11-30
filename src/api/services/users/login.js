@@ -1,19 +1,6 @@
 const { StatusCodes } = require('http-status-codes');
-const jwt = require('jsonwebtoken');
+const { signUser } = require('../auth');
 const userModel = require('../../models/users');
-
-const SECRET = 'mysecret';
-
-const auth = (user) => {
-  const jwtConfig = {
-    expiresIn: '7d',
-    algorithm: 'HS256',
-  };
-
-  const token = jwt.sign({ data: user }, SECRET, jwtConfig);
-
-  return token;
-};
 
 const login = async (user) => {
   const { email, password } = user;
@@ -28,7 +15,7 @@ const login = async (user) => {
     return { message: 'Incorrect username or password', code: StatusCodes.UNAUTHORIZED };
   }
 
-  const token = auth(user);
+  const token = signUser(found);
 
   return { token, code: StatusCodes.OK };
 };

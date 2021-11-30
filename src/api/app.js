@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const userRouter = require('./controllers/users/router');
+const recipeRouter = require('./controllers/recipes/router');
 const { login } = require('./controllers/users');
 const error = require('./middlewares/error');
 
@@ -18,6 +19,8 @@ app.get('/', (request, response) => {
 app.use('/users', userRouter);
 
 app.use('/login', login);
+
+app.use('/recipes', recipeRouter);
 
 app.use(error);
 
