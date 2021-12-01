@@ -5,6 +5,7 @@ const {
   create,
   getAll,
   findById,
+  update,
 } = require('.');
 const auth = require('../../middlewares/auth');
 
@@ -15,5 +16,7 @@ router.post('/', rescue(auth), rescue(create));
 router.get('/', rescue(getAll));
 
 router.get('/:id', rescue(findById));
+
+router.put('/:id', rescue(auth), rescue(update));
 
 module.exports = router;

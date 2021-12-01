@@ -5,6 +5,10 @@ const { verifyUser } = require('../services/auth');
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
+  if (!authorization) {
+    return next({ message: 'missing auth token', code: StatusCodes.UNAUTHORIZED });
+  }
+
   const user = verifyUser(authorization);
 
   if (!user) {
