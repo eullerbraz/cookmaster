@@ -3,6 +3,7 @@ const findByEmail = require('./findByEmail');
 const getAll = require('./getAll');
 const findById = require('./findById');
 const update = require('./update');
+const remove = require('./remove');
 
 module.exports = { 
   create,
@@ -10,4 +11,5 @@ module.exports = {
   getAll,
   findById,
   update,
+  remove,
  };

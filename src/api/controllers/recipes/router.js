@@ -6,6 +6,7 @@ const {
   getAll,
   findById,
   update,
+  remove,
 } = require('.');
 const auth = require('../../middlewares/auth');
 
@@ -18,5 +19,7 @@ router.get('/', rescue(getAll));
 router.get('/:id', rescue(findById));
 
 router.put('/:id', rescue(auth), rescue(update));
+
+router.delete('/:id', rescue(auth), rescue(remove));
 
 module.exports = router;
