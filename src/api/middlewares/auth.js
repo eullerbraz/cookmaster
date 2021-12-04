@@ -2,7 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 
 const { verifyUser } = require('../services/auth');
 
-module.exports = (req, res, next) => {
+module.exports = (req, _res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) {
